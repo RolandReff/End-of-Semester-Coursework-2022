@@ -197,16 +197,22 @@ def playConsole(file):
     GameInputSplit = GameInput.split()
     if not GameInputSplit:
       pass
+    elif GameInputSplit[0] == 'turn' and len(GameInputSplit) == 2:
+      if (GameInputSplit[0] == 'turn' and (GameInputSplit[1] == 'left' or 'right' or 'up' or 'down')):
+        turn(state,GameInputSplit[1])
+      else:
+        pass
+    elif (GameInputSplit[0] == 'show' and len(GameInputSplit) == 2):
+      if (GameInputSplit[0] == 'show' and GameInputSplit[1] == 'board'):
+        showBoard(state, 7,7)
+      elif (GameInputSplit[0] == 'show' and GameInputSplit[1] == 'player'):
+        showPlayer(state)
+      elif (GameInputSplit[0] == 'show' and GameInputSplit[1] == 'facing'):
+        showFacing(state)
+      else:
+        pass
     elif GameInputSplit[0] == 'step':
       step(state)
-    elif (GameInputSplit[0] == 'turn' and (GameInputSplit[1] == 'left' or 'right' or 'up' or 'down')):
-      turn(state,GameInputSplit[1])
-    elif (GameInputSplit[0] == 'show' and GameInputSplit[1] == 'board'):
-      showBoard(state, 7,7)
-    elif (GameInputSplit[0] == 'show' and GameInputSplit[1] == 'player'):
-      showPlayer(state)
-    elif (GameInputSplit[0] == 'show' and GameInputSplit[1] == 'facing'):
-      showFacing(state)
     elif GameInputSplit[0] == 'jump':
       jump(state)
     elif GameInputSplit[0] == 'eat':
